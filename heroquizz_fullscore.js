@@ -9,9 +9,9 @@
 *	@author RailKill
 */
 
-/**
-*	For each of the answers in the quiz, find the correct answer function and execute it.
-*/
+/** The delay (milliseconds) between answers. Increase if your computer is slow. */
+var TIME = 3000;
+
 $('.my_answers').each(function(index) {
 	var answerFunctionString = $(this).attr('onclick');
 	answerFunctionString = answerFunctionString.replace('AnswerQuestion(','');
@@ -26,9 +26,9 @@ $('.my_answers').each(function(index) {
 	// 3 - Correct Response
 	// The correct answer will have the same parameters in position 1 and 3.
 	if (parameterArray[1] == parameterArray[3]) {
-		// Answer the question with this response but wait 2 seconds
+		// Answer the question with this response but wait 3 seconds
 		// for the interface to show us the next question, then repeat.
-     	$(this).delay((1500 * index) + (500 * index)).queue(function() {
+     	$(this).delay(TIME * index).queue(function() {
      		$(this).click().dequeue();
      	});
 	}
